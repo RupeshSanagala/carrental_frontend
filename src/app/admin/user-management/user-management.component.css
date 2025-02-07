@@ -1,0 +1,35 @@
+.container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.btn-sm {
+  font-size: 14px;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .table {
+    font-size: 14px;
+  }
+
+  .btn-sm {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .form-control, .form-select {
+    font-size: 14px;
+  }
+}
