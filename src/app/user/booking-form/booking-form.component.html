@@ -1,0 +1,39 @@
+<div class="modal-header">
+    <h5 class="modal-title">Book a Car</h5>
+    <button type="button" class="close" (click)="closeDialog()">&times;</button>
+  </div>
+  
+  <div class="modal-body">
+    <form [formGroup]="bookingForm" (ngSubmit)="submitBooking()">
+      <div class="mb-3">
+        <label for="fullName" class="form-label">Full Name</label>
+        <input type="text" id="fullName" class="form-control" formControlName="fullName" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" class="form-control" formControlName="email" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="text" id="phone" class="form-control" formControlName="phone" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="pickupDate" class="form-label">Pickup Date</label>
+        <input type="date" id="pickupDate" class="form-control" formControlName="pickupDate" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="dropoffDate" class="form-label">Dropoff Date</label>
+        <input type="date" id="dropoffDate" class="form-control" formControlName="dropoffDate" required>
+      </div>
+  
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeDialog()">Cancel</button>
+        <button type="submit" class="btn btn-primary" [disabled]="bookingForm.invalid">Book Now</button>
+      </div>
+    </form>
+  </div>
+  

@@ -1,0 +1,41 @@
+<div class="container">
+  <h2>Admin Booking Management</h2>
+  <div *ngIf="loading" class="loading">Loading bookings...</div>
+
+  <table class="booking-table" *ngIf="!loading && bookings.length > 0">
+    <thead>
+      <tr>
+        <th>Booking ID</th>
+        <th>User ID</th>
+        <th>Car</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Total Price</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings">
+        <td>{{ booking.bookingId }}</td>
+        <td>{{ booking.userId }}</td>
+        <td>{{ booking.car.name }} ({{ booking.car.model }})</td>
+        <td>{{ booking.startDate }}</td>
+        <td>{{ booking.endDate }}</td>
+        <td>${{ booking.totalPrice }}</td>
+        <td [ngClass]="{'pending': booking.status === 'Pending', 'canceled': booking.status === 'Canceled'}">
+          {{ booking.status }}
+        </td>
+        <td>
+          <button class="cancel-btn" *ngIf="booking.status === 'Pending'" (click)="cancelBooking(booking.bookingId)">
+            Cancel
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && bookings.length === 0" class="no-data">
+    No bookings available.
+  </div>
+</div>

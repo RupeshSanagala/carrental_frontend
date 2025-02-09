@@ -1,0 +1,16 @@
+<div class="cars-container">
+    <mat-card *ngFor="let car of cars" class="car-card">
+      <div class="image-container">
+        <img mat-card-image [src]="car.imageUrl" alt="Car Image">
+      </div>
+      <mat-card-content>
+        <h2 class="car-title">{{ car.name }}</h2>
+        <p class="car-detail"><strong>Model:</strong> {{ car.model }}</p>
+        <p class="car-detail"><strong>Price:</strong> ${{ car.price }}/day</p>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary" (click)="openBookingForm(car)">Book Now</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  

@@ -1,0 +1,60 @@
+<div class="container">
+  <h2 class="title">User Management</h2>
+
+  <!-- Add User Form -->
+  <div class="add-user-card">
+    <h3>Add New User</h3>
+    <div class="form-group">
+      <input type="text" placeholder="Username" [(ngModel)]="newUser.username">
+      <input type="email" placeholder="Email" [(ngModel)]="newUser.email">
+      <input type="text" placeholder="Address" [(ngModel)]="newUser.address">
+      <input type="text" placeholder="Phone Number" [(ngModel)]="newUser.phoneNumber">
+      <select [(ngModel)]="newUser.role">
+        <option value="User">User</option>
+        <option value="Admin">Admin</option>
+      </select>
+      <button (click)="addUser()">Add User</button>
+    </div>
+  </div>
+
+  <!-- User List Table -->
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.userId }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phoneNumber }}</td>
+          <td>
+            <select [(ngModel)]="user.role" (change)="assignRole(user, user.role)">
+              <option value="User">User</option>
+              <option value="Admin">Admin</option>
+            </select>
+          </td>
+          <td>
+            <button (click)="toggleStatus(user)" [ngClass]="{'active': user.isActive, 'inactive': !user.isActive}">
+              {{ user.isActive ? 'Active' : 'Inactive' }}
+            </button>
+          </td>
+          <td>
+            <button class="edit-btn" (click)="editUser(user)">✏️ Edit</button>
+            <button class="delete-btn" (click)="deleteUser(user.userId)">❌ Delete</button>
+            <button class="reset-btn" (click)="resetPassword(user)">🔑 Reset Password</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
