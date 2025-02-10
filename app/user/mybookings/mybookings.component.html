@@ -1,0 +1,24 @@
+<div class="container mt-4">
+    <h2>Booking History</h2>
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Car</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Total Price</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let booking of bookings">
+          <td>{{ booking.carName }}</td>
+          <td>{{ booking.startDate | date }}</td>
+          <td>{{ booking.endDate | date }}</td>
+          <td>${{ booking.totalPrice }}</td>
+          <td>{{ booking.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
